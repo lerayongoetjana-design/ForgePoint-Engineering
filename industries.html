@@ -3,6 +3,8 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self' 'sha256-eTOJgkjUMR9tZ2EpyJgH2GtlrxRBMVJXAQkWKiuHspg='; style-src 'self'; img-src 'self' data:; font-src 'self'; connect-src 'none'; manifest-src 'self'; form-action 'none'; base-uri 'none'; object-src 'none'; upgrade-insecure-requests" />
+    <meta name="referrer" content="strict-origin-when-cross-origin" />
     <title>Industries We Serve | ForgePoint Engineering</title>
     <meta name="description" content="Typical engineering challenges in manufacturing, energy, mining and process industries, and how each service applies. Portfolio demonstration site for a fictional company." />
     <link rel="canonical" href="https://princessngoetjana.github.io/ForgePoint-Engineering/industries.html" />
@@ -27,12 +29,9 @@
     <meta name="twitter:description" content="Typical engineering challenges in manufacturing, energy, mining and process industries, and how each service applies. Portfolio demonstration site for a fictional company." />
     <meta name="twitter:image" content="https://princessngoetjana.github.io/ForgePoint-Engineering/assets/og-image.jpg" />
 
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@500;600;700&family=Inter:wght@400;500;600&display=swap"
-    />
+    <!-- Fonts are self-hosted: no third-party requests -->
+    <link rel="preload" href="assets/fonts/barlow-semi-condensed-700.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="assets/fonts/inter-variable.woff2" as="font" type="font/woff2" crossorigin />
     <link rel="stylesheet" href="css/styles.css" />
     <script>document.documentElement.className = document.documentElement.className.replace("no-js", "js");</script>
     <script src="js/main.js" defer></script>
@@ -342,7 +341,7 @@
       <div class="container">
         <section class="site-footer__privacy" id="privacy" aria-labelledby="privacy-title">
           <h2 class="site-footer__heading" id="privacy-title">Privacy notice</h2>
-          <p>This is a portfolio demonstration website. It uses no cookies, analytics or tracking, and the enquiry form does not send, store or share anything you type into it. Fonts are loaded from Google Fonts, which receives your IP address as part of that standard web request.</p>
+          <p>This is a portfolio demonstration website. It uses no cookies, analytics or tracking, and the enquiry form does not send, store or share anything you type into it. All fonts, images and scripts are served from this site itself, so your browser makes no requests to third parties.</p>
         </section>
       </div>
 
