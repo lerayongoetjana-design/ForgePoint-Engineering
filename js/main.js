@@ -1,16 +1,30 @@
 /* ==========================================================================
    ForgePoint Engineering — shared script
+   Fictional company created for portfolio demonstration.
+   --------------------------------------------------------------------------
+   1. Setup
+   2. Mobile navigation
+   3. Header state (transparent over hero, solid on scroll)
+   4. Services sub-navigation
+   5. Project filters
+   6. Enquiry form (demonstration only — nothing is sent or stored)
+   7. Scroll reveal + methodology progress
+   8. Copyright year
    ========================================================================== */
 (function () {
   "use strict";
 
+  /* 1. Setup
+     ------------------------------------------------------------------------ */
   var root = document.documentElement;
   root.classList.remove("no-js");
   root.classList.add("js");
 
+  var reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   var DESKTOP_QUERY = window.matchMedia("(min-width: 68em)");
+  var header = document.querySelector(".site-header");
 
-  /* Mobile navigation
+  /* 2. Mobile navigation
      ------------------------------------------------------------------------ */
   var toggle = document.querySelector(".nav-toggle");
   var nav = document.getElementById("site-nav");
@@ -21,8 +35,7 @@
     toggle.setAttribute("aria-label", open ? "Close menu" : "Open menu");
     nav.classList.toggle("is-open", open);
     document.body.classList.toggle("nav-open", open);
-    var siteHeader = document.querySelector(".site-header");
-    if (siteHeader) siteHeader.classList.toggle("is-menu-open", open);
+    if (header) header.classList.toggle("is-menu-open", open);
   }
 
   if (toggle && nav) {
@@ -30,12 +43,10 @@
       setNavOpen(toggle.getAttribute("aria-expanded") !== "true");
     });
 
-    // Close when a link inside the menu is chosen
     nav.addEventListener("click", function (event) {
       if (event.target.closest("a")) setNavOpen(false);
     });
 
-    // Close on Escape and return focus to the toggle
     document.addEventListener("keydown", function (event) {
       if (event.key === "Escape" && toggle.getAttribute("aria-expanded") === "true") {
         setNavOpen(false);
@@ -43,7 +54,6 @@
       }
     });
 
-    // Reset when resizing up to the desktop layout
     var onBreakpoint = function (event) {
       if (event.matches) setNavOpen(false);
     };
@@ -54,9 +64,8 @@
     }
   }
 
-  /* Header: transparent over the hero, solid navy once the page scrolls
+  /* 3. Header state
      ------------------------------------------------------------------------ */
-  var header = document.querySelector(".site-header");
   if (header) {
     var onScroll = function () {
       header.classList.toggle("is-scrolled", window.scrollY > 24);
@@ -65,47 +74,52 @@
     window.addEventListener("scroll", onScroll, { passive: true });
   }
 
-  /* Services sub-navigation: highlight the section in view
+  /* 4. Services sub-navigation: highlight the section in view
      ------------------------------------------------------------------------ */
-  var subnavLinks = document.querySelectorAll(".subnav__link");
-  if (subnavLinks.length && "IntersectionObserver" in window) {
-    var linkFor = {};
+  var subnavLinks = Array.prototype.slice.call(document.querySelectorAll(".subnav__link"));
+
+  function setActiveSubnav(id) {
     subnavLinks.forEach(function (link) {
-      linkFor[link.getAttribute("href").slice(1)] = link;
-    });
-
-    var setActive = function (id) {
-      subnavLinks.forEach(function (link) {
-        if (link === linkFor[id]) {
-          link.setAttribute("aria-current", "true");
-          // Keep the active link visible when the sub-nav scrolls sideways
-          var list = link.closest(".subnav__list");
-          if (list && list.scrollWidth > list.clientWidth) {
-            list.scrollTo({ left: Math.max(0, link.parentElement.offsetLeft - 16), behavior: "smooth" });
-          }
-        } else {
-          link.removeAttribute("aria-current");
+      var active = link.getAttribute("href") === "#" + id;
+      if (active) {
+        link.setAttribute("aria-current", "true");
+        var list = link.closest(".subnav__list");
+        if (list && list.scrollWidth > list.clientWidth) {
+          list.scrollTo({
+            left: Math.max(0, link.parentElement.offsetLeft - 16),
+            behavior: reduceMotion ? "auto" : "smooth"
+          });
         }
-      });
-    };
-
-    var observer = new IntersectionObserver(
-      function (entries) {
-        entries.forEach(function (entry) {
-          if (entry.isIntersecting) setActive(entry.target.id);
-        });
-      },
-      // Treat a band just below the sticky bars as "in view"
-      { rootMargin: "-30% 0px -60% 0px" }
-    );
-
-    Object.keys(linkFor).forEach(function (id) {
-      var section = document.getElementById(id);
-      if (section) observer.observe(section);
+      } else {
+        link.removeAttribute("aria-current");
+      }
     });
   }
 
-  /* Projects page: filter case studies by type
+  if (subnavLinks.length) {
+    subnavLinks.forEach(function (link) {
+      link.addEventListener("click", function () {
+        setActiveSubnav(link.getAttribute("href").slice(1));
+      });
+    });
+
+    if ("IntersectionObserver" in window) {
+      var sectionObserver = new IntersectionObserver(
+        function (entries) {
+          entries.forEach(function (entry) {
+            if (entry.isIntersecting) setActiveSubnav(entry.target.id);
+          });
+        },
+        { rootMargin: "-30% 0px -60% 0px" }
+      );
+      subnavLinks.forEach(function (link) {
+        var section = document.getElementById(link.getAttribute("href").slice(1));
+        if (section) sectionObserver.observe(section);
+      });
+    }
+  }
+
+  /* 5. Project filters
      ------------------------------------------------------------------------ */
   var filterButtons = document.querySelectorAll(".filter__btn");
   var cases = document.querySelectorAll(".case[data-category]");
@@ -123,7 +137,7 @@
       item.hidden = !match;
       if (match) {
         shown += 1;
-        if (wasHidden) {
+        if (wasHidden && !reduceMotion) {
           item.classList.remove("is-entering");
           void item.offsetWidth; // restart the animation
           item.classList.add("is-entering");
@@ -144,18 +158,22 @@
     });
   }
 
-  /* Contact page: enquiry form validation (no back end — nothing is sent)
+  /* 6. Enquiry form
+     Demonstration only. The fields have no name attributes and there is no
+     action URL, so the browser has nothing to send; values are only read here
+     to validate them, then cleared.
      ------------------------------------------------------------------------ */
   var form = document.getElementById("enquiry-form");
+
   if (form) {
-    form.noValidate = true; // use the custom messages below instead of browser pop-ups
+    form.noValidate = true;
 
     var EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
     var PHONE_PATTERN = /^\+?[0-9\s()-]{7,20}$/;
     var MESSAGE_MIN = 20;
 
     var rules = {
-      fullName: function (v) {
+      "full-name": function (v) {
         if (!v) return "Enter your full name.";
         if (v.length < 2) return "Full name must be at least 2 characters.";
         return "";
@@ -195,15 +213,29 @@
     var successTitle = document.getElementById("form-success-title");
     var successName = document.querySelector("[data-success-name]");
     var resetBtn = document.getElementById("form-reset");
+    var card = form.closest(".form-card");
+
+    // The submit button stays disabled without JavaScript, so nothing can be submitted
+    form.querySelectorAll("[data-requires-js]").forEach(function (el) {
+      el.disabled = false;
+    });
+
+    var fields = Object.keys(rules)
+      .map(function (id) { return document.getElementById(id); })
+      .filter(Boolean);
 
     var valueOf = function (field) {
       return field.type === "checkbox" ? field.checked : field.value.trim();
     };
 
+    var labelText = function (field) {
+      if (field.type === "checkbox") return "Consent";
+      var label = form.querySelector('label[for="' + field.id + '"]');
+      return label ? label.textContent.replace("*", "").replace("(optional)", "").trim() : field.id;
+    };
+
     var validateField = function (field) {
-      var rule = rules[field.name];
-      if (!rule) return true;
-      var message = rule(valueOf(field));
+      var message = rules[field.id](valueOf(field));
       var errorEl = document.getElementById(field.id + "-error");
       if (errorEl) errorEl.textContent = message;
       if (message) {
@@ -211,89 +243,129 @@
       } else {
         field.removeAttribute("aria-invalid");
       }
-      return !message;
+      return message;
     };
 
-    var fields = Object.keys(rules)
-      .map(function (name) { return form.elements[name]; })
-      .filter(Boolean);
-
     fields.forEach(function (field) {
-      // Check a field once the user leaves it, then re-check as they correct it
+      var isChoice = field.tagName === "SELECT" || field.type === "checkbox";
+
+      // Check a field once the user leaves it (not on an untouched empty field)
       field.addEventListener("blur", function () {
-        if (field.type !== "checkbox" && valueOf(field) === "" && !field.dataset.touched) return;
+        if (!isChoice && valueOf(field) === "" && !field.dataset.touched) return;
         field.dataset.touched = "true";
         validateField(field);
       });
-      field.addEventListener(field.tagName === "SELECT" || field.type === "checkbox" ? "change" : "input", function () {
-        if (field.getAttribute("aria-invalid") === "true" || field.type === "checkbox" || field.tagName === "SELECT") {
+
+      // Re-check as they correct it, so errors clear straight away
+      field.addEventListener(isChoice ? "change" : "input", function () {
+        if (isChoice || field.getAttribute("aria-invalid") === "true") {
           field.dataset.touched = "true";
           validateField(field);
         }
       });
     });
 
+    var showSummary = function (problems) {
+      alertBox.innerHTML = "";
+      var heading = document.createElement("p");
+      heading.className = "form-alert__title";
+      heading.textContent =
+        problems.length === 1
+          ? "There is 1 problem with your enquiry"
+          : "There are " + problems.length + " problems with your enquiry";
+      var list = document.createElement("ul");
+      list.className = "form-alert__list";
+      problems.forEach(function (problem) {
+        var item = document.createElement("li");
+        var link = document.createElement("a");
+        link.href = "#" + problem.field.id;
+        link.textContent = labelText(problem.field) + ": " + problem.message;
+        link.addEventListener("click", function (event) {
+          event.preventDefault();
+          problem.field.focus();
+          problem.field.scrollIntoView({ block: "center", behavior: reduceMotion ? "auto" : "smooth" });
+        });
+        item.appendChild(link);
+        list.appendChild(item);
+      });
+      alertBox.appendChild(heading);
+      alertBox.appendChild(list);
+      alertBox.hidden = false;
+      alertBox.focus();
+    };
+
     form.addEventListener("submit", function (event) {
       event.preventDefault();
-      var firstInvalid = null;
-      var errorCount = 0;
+      var problems = [];
 
       fields.forEach(function (field) {
         field.dataset.touched = "true";
-        if (!validateField(field)) {
-          errorCount += 1;
-          if (!firstInvalid) firstInvalid = field;
-        }
+        var message = validateField(field);
+        if (message) problems.push({ field: field, message: message });
       });
 
-      if (firstInvalid) {
-        alertBox.textContent =
-          errorCount === 1
-            ? "There is 1 problem with the form. Please check the highlighted field."
-            : "There are " + errorCount + " problems with the form. Please check the highlighted fields.";
-        alertBox.hidden = false;
-        firstInvalid.focus();
+      if (problems.length) {
+        showSummary(problems);
         return;
       }
 
-      // Valid: show the on-page confirmation. Nothing is sent or stored.
-      alertBox.hidden = true;
-      var firstName = valueOf(form.elements.fullName).split(/\s+/)[0];
+      // Valid: confirm on the page, then clear every value. Nothing is sent or stored.
+      var firstName = valueOf(document.getElementById("full-name")).split(/\s+/)[0];
       successName.textContent = firstName ? ", " + firstName : "";
+      form.reset();
+      fields.forEach(function (field) {
+        delete field.dataset.touched;
+      });
+      alertBox.hidden = true;
       form.hidden = true;
       success.hidden = false;
-      form.parentElement.classList.add("is-complete");
+      if (card) card.classList.add("is-complete");
       successTitle.focus();
     });
 
     if (resetBtn) {
       resetBtn.addEventListener("click", function () {
-        form.reset();
         fields.forEach(function (field) {
-          delete field.dataset.touched;
           field.removeAttribute("aria-invalid");
           var errorEl = document.getElementById(field.id + "-error");
           if (errorEl) errorEl.textContent = "";
         });
-        alertBox.hidden = true;
+        successName.textContent = "";
         success.hidden = true;
         form.hidden = false;
-        form.parentElement.classList.remove("is-complete");
-        form.elements.fullName.focus();
+        if (card) card.classList.remove("is-complete");
+        document.getElementById("full-name").focus();
       });
     }
   }
 
-  /* Fade-up entrance as sections scroll into view
+  /* 7. Scroll reveal + methodology progress
      ------------------------------------------------------------------------ */
-  var reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-  if (!reduceMotion && "IntersectionObserver" in window) {
+  var methods = document.querySelectorAll("[data-method]");
+
+  if (reduceMotion || !("IntersectionObserver" in window)) {
+    methods.forEach(function (m) { m.classList.add("is-active"); });
+  } else {
+    // Methodology: draw the progress line once, when the steps come into view
+    var methodObserver = new IntersectionObserver(
+      function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("is-active");
+            methodObserver.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.35 }
+    );
+    methods.forEach(function (m) { methodObserver.observe(m); });
+
     var REVEAL_SELECTOR = [
       ".section-header",
       ".card",
       ".project-card",
       ".value-card",
-      ".process__step",
+      ".method__step",
       ".philosophy > *",
       ".expertise > *",
       ".industry__header",
@@ -328,7 +400,6 @@
     document.querySelectorAll(REVEAL_SELECTOR).forEach(function (el) {
       // Leave anything already on screen alone so it never flickers
       if (el.getBoundingClientRect().top < window.innerHeight) return;
-      // Stagger items that sit side by side in the same list or grid
       var siblings = Array.prototype.filter.call(el.parentElement.children, function (c) {
         return c.matches(REVEAL_SELECTOR);
       });
@@ -341,7 +412,7 @@
     });
   }
 
-  /* Copyright year
+  /* 8. Copyright year
      ------------------------------------------------------------------------ */
   var year = String(new Date().getFullYear());
   document.querySelectorAll("[data-year]").forEach(function (el) {

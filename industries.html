@@ -3,10 +3,29 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Industries | ForgePoint Engineering</title>
-    <meta name="description" content="The industrial sectors ForgePoint Engineering (fictional concept) is designed to support across the UK." />
+    <title>Industries We Serve | ForgePoint Engineering</title>
+    <meta name="description" content="Typical engineering challenges in manufacturing, energy, mining and process industries, and how each service applies. Portfolio demonstration site for a fictional company." />
+    <link rel="canonical" href="https://lerayongoetjana-design.github.io/ForgePoint-Engineering/industries.html" />
     <meta name="theme-color" content="#0b1f3a" />
-    <link rel="icon" href="assets/logo-mark.svg" type="image/svg+xml" />
+    <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+    <link rel="icon" href="assets/favicon-32.png" sizes="32x32" type="image/png" />
+    <link rel="apple-touch-icon" href="assets/apple-touch-icon.png" />
+
+    <!-- Social sharing -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="ForgePoint Engineering (portfolio demo)" />
+    <meta property="og:locale" content="en_GB" />
+    <meta property="og:title" content="Industries We Serve | ForgePoint Engineering" />
+    <meta property="og:description" content="Typical engineering challenges in manufacturing, energy, mining and process industries, and how each service applies. Portfolio demonstration site for a fictional company." />
+    <meta property="og:url" content="https://lerayongoetjana-design.github.io/ForgePoint-Engineering/industries.html" />
+    <meta property="og:image" content="https://lerayongoetjana-design.github.io/ForgePoint-Engineering/assets/og-image.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="ForgePoint Engineering: Engineering Reliability. Delivering Performance." />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Industries We Serve | ForgePoint Engineering" />
+    <meta name="twitter:description" content="Typical engineering challenges in manufacturing, energy, mining and process industries, and how each service applies. Portfolio demonstration site for a fictional company." />
+    <meta name="twitter:image" content="https://lerayongoetjana-design.github.io/ForgePoint-Engineering/assets/og-image.jpg" />
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -23,6 +42,12 @@
 
     <!-- ==================== Site header ==================== -->
     <header class="site-header">
+      <div class="demo-notice" role="note">
+        <div class="container demo-notice__inner">
+          <span class="demo-notice__label">Portfolio demo</span>
+          <span class="demo-notice__text"><span class="demo-notice__long">ForgePoint Engineering is a fictional company. This website is a web design demonstration and no real services are offered.</span><span class="demo-notice__short">Fictional company<span class="demo-notice__extra"> &middot; no real services offered</span></span></span>
+        </div>
+      </div>
       <div class="container site-header__inner">
         <a class="logo" href="index.html" aria-label="ForgePoint Engineering — home">
             <svg class="logo__mark" viewBox="0 0 40 40" aria-hidden="true" focusable="false">
@@ -48,7 +73,7 @@
             <li><a class="site-nav__link" href="projects.html">Projects</a></li>
             <li><a class="site-nav__link" href="contact.html">Contact</a></li>
           </ul>
-          <a class="btn btn--primary btn--sm" href="contact.html">Request a Consultation</a>
+          <a class="btn btn--primary btn--sm" href="contact.html#enquiry">Request a Consultation</a>
         </nav>
       </div>
     </header>
@@ -142,7 +167,7 @@
               <h2 id="ind-2-title">Energy</h2>
               <p class="lead">Energy generation and distribution rely on critical rotating equipment with long service lives. Failures can carry serious safety, environmental and supply consequences, so reliability and careful planning are essential.</p>
             </div>
-            <figure class="industry__media"><img src="assets/images/engineer-inspection-800.jpg" srcset="assets/images/engineer-inspection-800.jpg 800w, assets/images/engineer-inspection-1600.jpg 1600w" sizes="(min-width: 64em) 40vw, 100vw" width="800" height="533" loading="lazy" decoding="async" alt="Engineer in a hard hat and safety glasses inspecting plant equipment amid rising steam" /></figure>
+            <figure class="industry__media"><img src="assets/images/power-station-800.jpg" srcset="assets/images/power-station-800.jpg 800w, assets/images/power-station-1600.jpg 1600w" sizes="(min-width: 64em) 40vw, 100vw" width="800" height="533" loading="lazy" decoding="async" alt="Power generation plant with large rotating equipment" /></figure>
           </header>
 
           <div class="grid-2 industry__body">
@@ -245,7 +270,7 @@
             <h2 id="cta-title" class="cta-band__title">Let&rsquo;s Engineer What&rsquo;s Next.</h2>
             <p class="cta-band__text">Discuss your engineering challenges with our team.</p>
           </div>
-          <a class="btn btn--primary btn--arrow" href="contact.html">Request a Consultation</a>
+          <a class="btn btn--primary btn--arrow" href="contact.html#enquiry">Request a Consultation</a>
         </div>
       </section>
     </main>
@@ -265,22 +290,33 @@
             </span>
           </a>
           <p class="site-footer__tagline">Engineering performance. Built&nbsp;to&nbsp;last.</p>
+          <p class="site-footer__about">ForgePoint Engineering is a fictional industrial engineering consultancy, created to demonstrate website design and development for engineering firms, manufacturers and industrial contractors.</p>
           <p class="site-footer__subline">Mechanical Engineering &bull; Asset Reliability &bull; Industrial Projects</p>
         </div>
 
-        <nav class="site-footer__nav" aria-label="Footer">
-          <h2 class="site-footer__heading">Pages</h2>
+        <nav class="site-footer__col" aria-label="Services">
+          <h2 class="site-footer__heading">Services</h2>
           <ul class="site-footer__links">
-            <li><a href="index.html">Home</a></li>
-            <li><a href="about.html">About</a></li>
-            <li><a href="services.html">Services</a></li>
-            <li><a href="industries.html">Industries</a></li>
-            <li><a href="projects.html">Projects</a></li>
-            <li><a href="contact.html">Contact</a></li>
+            <li><a href="services.html#mechanical-engineering">Mechanical Engineering</a></li>
+            <li><a href="services.html#asset-reliability">Asset Reliability &amp; Maintenance</a></li>
+            <li><a href="services.html#plant-optimisation">Plant Optimisation</a></li>
+            <li><a href="services.html#engineering-projects">Engineering Projects</a></li>
           </ul>
         </nav>
 
-        <div>
+        <nav class="site-footer__col" aria-label="Footer">
+          <h2 class="site-footer__heading">Company</h2>
+          <ul class="site-footer__links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="industries.html">Industries</a></li>
+            <li><a href="projects.html">Projects</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="#privacy">Privacy notice</a></li>
+          </ul>
+        </nav>
+
+        <div class="site-footer__col">
           <h2 class="site-footer__heading">Contact</h2>
           <address class="site-footer__contact">
             <dl class="stack stack--sm">
@@ -299,13 +335,21 @@
             </dl>
           </address>
           <p class="site-footer__notice">Illustrative contact details only</p>
+          <a class="btn btn--primary btn--sm btn--arrow site-footer__cta" href="contact.html#enquiry">Request a Consultation</a>
         </div>
+      </div>
+
+      <div class="container">
+        <section class="site-footer__privacy" id="privacy" aria-labelledby="privacy-title">
+          <h2 class="site-footer__heading" id="privacy-title">Privacy notice</h2>
+          <p>This is a portfolio demonstration website. It uses no cookies, analytics or tracking, and the enquiry form does not send, store or share anything you type into it. Fonts are loaded from Google Fonts, which receives your IP address as part of that standard web request.</p>
+        </section>
       </div>
 
       <div class="site-footer__bottom">
         <div class="container site-footer__bottom-inner">
           <p>&copy; <span data-year>2026</span> ForgePoint Engineering. All rights reserved.</p>
-          <p>ForgePoint Engineering is a fictional company created for portfolio demonstration.</p>
+          <p>Portfolio demonstration &middot; ForgePoint Engineering is a fictional company.</p>
           <p>Photography: Unsplash / Pexels</p>
         </div>
       </div>

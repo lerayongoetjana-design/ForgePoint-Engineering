@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40">
+  <style>
+    .o { fill: none; stroke: #0b1f3a; stroke-width: 3.5; stroke-linejoin: round; }
+    @media (prefers-color-scheme: dark) { .o { stroke: #f6f5f1; } }
+  </style>
+  <polygon class="o" points="20,2.5 35.2,11.25 35.2,28.75 20,37.5 4.8,28.75 4.8,11.25"/>
+  <polygon fill="#e8641b" points="20,12 27,16 27,24 20,28 13,24 13,16"/>
+</svg>
