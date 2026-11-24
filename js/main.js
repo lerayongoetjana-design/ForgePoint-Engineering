@@ -63,6 +63,46 @@
     window.addEventListener("scroll", onScroll, { passive: true });
   }
 
+  /* Services sub-navigation: highlight the section in view
+     ------------------------------------------------------------------------ */
+  var subnavLinks = document.querySelectorAll(".subnav__link");
+  if (subnavLinks.length && "IntersectionObserver" in window) {
+    var linkFor = {};
+    subnavLinks.forEach(function (link) {
+      linkFor[link.getAttribute("href").slice(1)] = link;
+    });
+
+    var setActive = function (id) {
+      subnavLinks.forEach(function (link) {
+        if (link === linkFor[id]) {
+          link.setAttribute("aria-current", "true");
+          // Keep the active link visible when the sub-nav scrolls sideways
+          var list = link.closest(".subnav__list");
+          if (list && list.scrollWidth > list.clientWidth) {
+            list.scrollTo({ left: Math.max(0, link.parentElement.offsetLeft - 16), behavior: "smooth" });
+          }
+        } else {
+          link.removeAttribute("aria-current");
+        }
+      });
+    };
+
+    var observer = new IntersectionObserver(
+      function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) setActive(entry.target.id);
+        });
+      },
+      // Treat a band just below the sticky bars as "in view"
+      { rootMargin: "-30% 0px -60% 0px" }
+    );
+
+    Object.keys(linkFor).forEach(function (id) {
+      var section = document.getElementById(id);
+      if (section) observer.observe(section);
+    });
+  }
+
   /* Copyright year
      ------------------------------------------------------------------------ */
   var year = String(new Date().getFullYear());
