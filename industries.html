@@ -54,7 +54,196 @@
     </header>
 
     <main id="main" class="site-main" tabindex="-1">
-      <!-- Industries page content to be built -->
+      <!-- ==================== Page hero ==================== -->
+      <section class="page-hero" aria-labelledby="page-title">
+        <div class="container stack">
+          <p class="eyebrow">Industries</p>
+          <h1 id="page-title" class="page-hero__title">Engineering support for demanding sectors</h1>
+          <p class="page-hero__lead">Each industry brings its own operating conditions, risks and constraints. Here is how our services are designed to apply across four key sectors.</p>
+        </div>
+      </section>
+
+      <!-- ==================== Sector jump links ==================== -->
+      <nav class="sectors" aria-label="Sectors on this page">
+        <div class="container sectors__inner">
+          <p class="sectors__title">Jump to sector</p>
+          <ul class="sectors__list" role="list">
+            <li>
+              <a class="sector" href="#manufacturing">
+                <svg class="sector__icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M2.5 21V11l5 3v-3l5 3v-3l5 3V4h4v17Z" /><path d="M6 18h2M11 18h2M16 18h2" /></svg>
+                <span>Manufacturing</span>
+              </a>
+            </li>
+            <li>
+              <a class="sector" href="#energy">
+                <svg class="sector__icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M13 2.5 5 13.5h6l-1 8 8-11h-6Z" /></svg>
+                <span>Energy</span>
+              </a>
+            </li>
+            <li>
+              <a class="sector" href="#mining">
+                <svg class="sector__icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M3 9h18l-2.5 8h-13Z" /><circle cx="8" cy="19.5" r="1.5" /><circle cx="16" cy="19.5" r="1.5" /><path d="M7 9l2-4 3 2 3-3 2 5" /></svg>
+                <span>Mining</span>
+              </a>
+            </li>
+            <li>
+              <a class="sector" href="#process-industries">
+                <svg class="sector__icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="3" y="5" width="7" height="16" rx="1" /><path d="M10 9h4v8h4" /><path d="M18 13v8h3v-8Z" /><path d="M3 3h7" /></svg>
+                <span>Process Industries</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+
+      <!-- ==================== Manufacturing ==================== -->
+      <section class="section industry" id="manufacturing" aria-labelledby="ind-1-title">
+        <div class="container stack stack--lg">
+          <header class="industry__header">
+            <svg class="industry__icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M2.5 21V11l5 3v-3l5 3v-3l5 3V4h4v17Z" /><path d="M6 18h2M11 18h2M16 18h2" /></svg>
+            <div class="stack stack--sm">
+              <p class="eyebrow">Sector 01</p>
+              <h2 id="ind-1-title">Manufacturing</h2>
+              <p class="lead">Production lines depend on many machines working together. Small losses at one station can limit the output of the whole line, and maintenance has to fit around tight production schedules.</p>
+            </div>
+          </header>
+
+          <div class="grid-2 industry__body">
+            <div class="panel">
+              <h3 class="panel__title">Typical engineering challenges</h3>
+              <ul class="check-list check-list--compact" role="list">
+                <li><strong>Lost output from minor stops</strong> Short, frequent interruptions that add up but are rarely recorded.</li>
+                <li><strong>Mixed-age equipment</strong> Older mechanical plant running alongside newer automated machinery.</li>
+                <li><strong>Changeovers and flexibility</strong> Product changes that take time and introduce variability.</li>
+                <li><strong>Limited maintenance windows</strong> Pressure to keep lines running leaves little time for planned work.</li>
+              </ul>
+            </div>
+            <div class="panel">
+              <h3 class="panel__title">How ForgePoint helps</h3>
+              <ul class="service-links" role="list">
+                <li><a href="services.html#plant-optimisation"><strong>Plant Optimisation</strong> Bottleneck analysis and availability reviews to find where output is lost.</a></li>
+                <li><a href="services.html#asset-reliability"><strong>Asset Reliability &amp; Maintenance</strong> Preventive maintenance optimisation that fits around production.</a></li>
+                <li><a href="services.html#mechanical-engineering"><strong>Mechanical Engineering</strong> Assessments and upgrades for ageing mechanical equipment.</a></li>
+                <li><a href="services.html#engineering-projects"><strong>Engineering Projects</strong> Support for line modifications, installation and commissioning.</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==================== Energy ==================== -->
+      <section class="section section--surface industry" id="energy" aria-labelledby="ind-2-title">
+        <div class="container stack stack--lg">
+          <header class="industry__header">
+            <svg class="industry__icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M13 2.5 5 13.5h6l-1 8 8-11h-6Z" /></svg>
+            <div class="stack stack--sm">
+              <p class="eyebrow">Sector 02</p>
+              <h2 id="ind-2-title">Energy</h2>
+              <p class="lead">Energy generation and distribution rely on critical rotating equipment with long service lives. Failures can carry serious safety, environmental and supply consequences, so reliability and careful planning are essential.</p>
+            </div>
+          </header>
+
+          <div class="grid-2 industry__body">
+            <div class="panel">
+              <h3 class="panel__title">Typical engineering challenges</h3>
+              <ul class="check-list check-list--compact" role="list">
+                <li><strong>High-consequence equipment</strong> Pumps, fans, compressors and turbines where failure has serious impact.</li>
+                <li><strong>Safety and regulatory expectations</strong> Demanding requirements for risk management and documentation.</li>
+                <li><strong>Long asset lives</strong> Decisions on life extension, refurbishment or replacement of ageing plant.</li>
+                <li><strong>Planned outages</strong> Maintenance and upgrades that must be completed within fixed outage windows.</li>
+              </ul>
+            </div>
+            <div class="panel">
+              <h3 class="panel__title">How ForgePoint helps</h3>
+              <ul class="service-links" role="list">
+                <li><a href="services.html#asset-reliability"><strong>Asset Reliability &amp; Maintenance</strong> RCM studies and asset lifecycle planning for critical equipment.</a></li>
+                <li><a href="services.html#mechanical-engineering"><strong>Mechanical Engineering</strong> Rotating machinery assessments and technical problem-solving.</a></li>
+                <li><a href="services.html#engineering-projects"><strong>Engineering Projects</strong> Outage planning, installation support and commissioning.</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==================== Mining ==================== -->
+      <section class="section industry" id="mining" aria-labelledby="ind-3-title">
+        <div class="container stack stack--lg">
+          <header class="industry__header">
+            <svg class="industry__icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M3 9h18l-2.5 8h-13Z" /><circle cx="8" cy="19.5" r="1.5" /><circle cx="16" cy="19.5" r="1.5" /><path d="M7 9l2-4 3 2 3-3 2 5" /></svg>
+            <div class="stack stack--sm">
+              <p class="eyebrow">Sector 03</p>
+              <h2 id="ind-3-title">Mining</h2>
+              <p class="lead">Mining, quarrying and bulk materials handling put equipment under heavy loads in abrasive, dusty conditions. Conveyors, crushers and screens must keep moving material reliably, often at sites where access is difficult.</p>
+            </div>
+          </header>
+
+          <div class="grid-2 industry__body">
+            <div class="panel">
+              <h3 class="panel__title">Typical engineering challenges</h3>
+              <ul class="check-list check-list--compact" role="list">
+                <li><strong>Severe wear</strong> Abrasive materials that shorten the life of liners, belts, idlers and wear parts.</li>
+                <li><strong>Heavy and variable loads</strong> Equipment operating beyond its original design duty as production changes.</li>
+                <li><strong>Material handling reliability</strong> Conveyor and transfer point problems that stop the whole flow of material.</li>
+                <li><strong>Remote and harsh sites</strong> Limited access for inspection and maintenance.</li>
+              </ul>
+            </div>
+            <div class="panel">
+              <h3 class="panel__title">How ForgePoint helps</h3>
+              <ul class="service-links" role="list">
+                <li><a href="services.html#mechanical-engineering"><strong>Mechanical Engineering</strong> Conveyor and material handling assessments, design checks and upgrades.</a></li>
+                <li><a href="services.html#asset-reliability"><strong>Asset Reliability &amp; Maintenance</strong> Failure analysis of wear-related problems and maintenance planning.</a></li>
+                <li><a href="services.html#engineering-projects"><strong>Engineering Projects</strong> Upgrades planned to fit within scheduled shutdowns.</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==================== Process Industries ==================== -->
+      <section class="section section--surface industry" id="process-industries" aria-labelledby="ind-4-title">
+        <div class="container stack stack--lg">
+          <header class="industry__header">
+            <svg class="industry__icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="3" y="5" width="7" height="16" rx="1" /><path d="M10 9h4v8h4" /><path d="M18 13v8h3v-8Z" /><path d="M3 3h7" /></svg>
+            <div class="stack stack--sm">
+              <p class="eyebrow">Sector 04</p>
+              <h2 id="ind-4-title">Process Industries</h2>
+              <p class="lead">Chemical, food and drink, water and other process operations often run continuously. Unplanned stoppages can be costly and disruptive, and equipment must meet strict containment, hygiene and safety requirements.</p>
+            </div>
+          </header>
+
+          <div class="grid-2 industry__body">
+            <div class="panel">
+              <h3 class="panel__title">Typical engineering challenges</h3>
+              <ul class="check-list check-list--compact" role="list">
+                <li><strong>Continuous operation</strong> Little tolerance for unplanned downtime on critical process equipment.</li>
+                <li><strong>Varied mechanical plant</strong> Pumps, mixers, heat exchangers, vessels and associated pipework.</li>
+                <li><strong>Containment and hygiene</strong> Equipment that must meet demanding process and safety standards.</li>
+                <li><strong>Changing process duties</strong> Plant asked to run outside its original design conditions.</li>
+              </ul>
+            </div>
+            <div class="panel">
+              <h3 class="panel__title">How ForgePoint helps</h3>
+              <ul class="service-links" role="list">
+                <li><a href="services.html#asset-reliability"><strong>Asset Reliability &amp; Maintenance</strong> RCM and root cause analysis for critical process equipment.</a></li>
+                <li><a href="services.html#plant-optimisation"><strong>Plant Optimisation</strong> Throughput and availability reviews across the process.</a></li>
+                <li><a href="services.html#mechanical-engineering"><strong>Mechanical Engineering</strong> Equipment assessments for changing duties.</a></li>
+                <li><a href="services.html#engineering-projects"><strong>Engineering Projects</strong> Plant modifications, installation support and commissioning.</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==================== CTA band ==================== -->
+      <section class="cta-band" aria-labelledby="cta-title">
+        <div class="container cta-band__inner">
+          <div class="stack stack--sm">
+            <h2 id="cta-title" class="cta-band__title">Let&rsquo;s Engineer What&rsquo;s Next.</h2>
+            <p class="cta-band__text">Discuss your engineering challenges with our team.</p>
+          </div>
+          <a class="btn btn--primary" href="contact.html">Request a Consultation</a>
+        </div>
+      </section>
     </main>
 
     <!-- ==================== Site footer ==================== -->

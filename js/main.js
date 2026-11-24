@@ -103,6 +103,45 @@
     });
   }
 
+  /* Projects page: filter case studies by type
+     ------------------------------------------------------------------------ */
+  var filterButtons = document.querySelectorAll(".filter__btn");
+  var cases = document.querySelectorAll(".case[data-category]");
+  var filterStatus = document.querySelector(".filter__status");
+
+  function applyFilter(filter) {
+    var shown = 0;
+    filterButtons.forEach(function (btn) {
+      btn.setAttribute("aria-pressed", String(btn.getAttribute("data-filter") === filter));
+    });
+    cases.forEach(function (item) {
+      var categories = item.getAttribute("data-category").split(" ");
+      var match = filter === "all" || categories.indexOf(filter) !== -1;
+      var wasHidden = item.hidden;
+      item.hidden = !match;
+      if (match) {
+        shown += 1;
+        if (wasHidden) {
+          item.classList.remove("is-entering");
+          void item.offsetWidth; // restart the animation
+          item.classList.add("is-entering");
+        }
+      }
+    });
+    if (filterStatus) {
+      filterStatus.textContent =
+        "Showing " + shown + " of " + cases.length + " case stud" + (cases.length === 1 ? "y" : "ies");
+    }
+  }
+
+  if (filterButtons.length && cases.length) {
+    filterButtons.forEach(function (btn) {
+      btn.addEventListener("click", function () {
+        applyFilter(btn.getAttribute("data-filter"));
+      });
+    });
+  }
+
   /* Copyright year
      ------------------------------------------------------------------------ */
   var year = String(new Date().getFullYear());

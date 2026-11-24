@@ -54,7 +54,315 @@
     </header>
 
     <main id="main" class="site-main" tabindex="-1">
-      <!-- Projects page content to be built -->
+      <!-- ==================== Page hero ==================== -->
+      <section class="page-hero" aria-labelledby="page-title">
+        <div class="container stack">
+          <p class="eyebrow">Projects</p>
+          <h1 id="page-title" class="page-hero__title">Concept engineering case studies</h1>
+          <p class="page-hero__lead">Three fictional case studies showing how ForgePoint approaches typical industrial engineering challenges. They do not describe real projects, sites or clients.</p>
+        </div>
+      </section>
+
+      <section class="section" aria-label="Case studies">
+        <div class="container stack stack--lg">
+
+          <!-- Filters -->
+          <div class="filter-bar">
+            <div class="filter" role="group" aria-label="Filter case studies by type">
+              <button class="filter__btn" type="button" data-filter="all" aria-pressed="true">All</button>
+              <button class="filter__btn" type="button" data-filter="reliability" aria-pressed="false">Reliability</button>
+              <button class="filter__btn" type="button" data-filter="mechanical" aria-pressed="false">Mechanical</button>
+              <button class="filter__btn" type="button" data-filter="optimisation" aria-pressed="false">Optimisation</button>
+            </div>
+            <p class="filter__status" aria-live="polite">Showing 3 of 3 case studies</p>
+          </div>
+
+          <div class="case-list">
+
+            <!-- ==================== Case study 1 ==================== -->
+            <article class="case" id="plant-reliability" data-category="reliability" aria-labelledby="case-1-title">
+              <div class="case__top">
+                <header class="case__header stack">
+                  <div class="cluster case__badges">
+                    <span class="badge-concept">Concept case study &ndash; fictional, for demonstration</span>
+                    <span class="tag tag--category">Reliability</span>
+                  </div>
+                  <h2 id="case-1-title" class="case__title">Industrial Plant Reliability Improvement</h2>
+                  <p class="case__meta"><span>Setting:</span> Fictional continuous processing plant <span class="case__sep" aria-hidden="true">/</span> <span>Services:</span> Asset Reliability, Mechanical Engineering</p>
+                  <p class="lead">Equipment reliability assessments, a revised maintenance strategy and a prioritised improvement plan for a group of critical plant assets.</p>
+                </header>
+
+                <figure class="case__figure">
+                  <svg class="diagram" viewBox="0 0 560 340" role="img" aria-labelledby="dg-1-title">
+                    <title id="dg-1-title">Diagram: plant assets tagged A1 to A4 mapped onto a likelihood and consequence risk matrix, with the pump A2 highlighted as most critical</title>
+                    <text x="24" y="34" class="dg-label">ASSET CRITICALITY REVIEW</text>
+                    <path d="M24 44H536" class="dg-rule" />
+
+                    <!-- Process schematic -->
+                    <rect x="34" y="96" width="56" height="112" rx="6" class="dg-line" />
+                    <path d="M34 120H90" class="dg-thin" />
+                    <path d="M90 186H142M182 186H222V150H262" class="dg-line" />
+                    <circle cx="162" cy="186" r="20" class="dg-line" />
+                    <circle cx="162" cy="186" r="7" class="dg-fill-accent" />
+                    <rect x="262" y="120" width="40" height="60" rx="20" class="dg-line" />
+                    <path d="M150 206l-8 18h40l-8-18" class="dg-line" />
+                    <!-- Fan and motor -->
+                    <circle cx="96" cy="268" r="22" class="dg-line" />
+                    <path d="M96 246v44M74 268h44" class="dg-thin" />
+                    <rect x="124" y="256" width="58" height="24" class="dg-line" />
+                    <path d="M118 268h6" class="dg-line" />
+
+                    <!-- Asset tags -->
+                    <g class="dg-tag"><polygon points="62,62 74,69 74,83 62,90 50,83 50,69" /><text x="62" y="80">A1</text></g>
+                    <g class="dg-tag dg-tag--accent"><polygon points="162,130 174,137 174,151 162,158 150,151 150,137" /><text x="162" y="148">A2</text></g>
+                    <g class="dg-tag"><polygon points="282,84 294,91 294,105 282,112 270,105 270,91" /><text x="282" y="102">A3</text></g>
+                    <g class="dg-tag"><polygon points="214,254 226,261 226,275 214,282 202,275 202,261" /><text x="214" y="272">A4</text></g>
+
+                    <!-- Risk matrix -->
+                    <g transform="translate(356 76)">
+                      <rect x="0" y="0" width="40" height="40" class="dg-cell dg-cell--2" />
+                      <rect x="40" y="0" width="40" height="40" class="dg-cell dg-cell--3" />
+                      <rect x="80" y="0" width="40" height="40" class="dg-cell dg-cell--4" />
+                      <rect x="120" y="0" width="40" height="40" class="dg-cell dg-cell--4" />
+                      <rect x="0" y="40" width="40" height="40" class="dg-cell dg-cell--1" />
+                      <rect x="40" y="40" width="40" height="40" class="dg-cell dg-cell--2" />
+                      <rect x="80" y="40" width="40" height="40" class="dg-cell dg-cell--3" />
+                      <rect x="120" y="40" width="40" height="40" class="dg-cell dg-cell--4" />
+                      <rect x="0" y="80" width="40" height="40" class="dg-cell dg-cell--1" />
+                      <rect x="40" y="80" width="40" height="40" class="dg-cell dg-cell--1" />
+                      <rect x="80" y="80" width="40" height="40" class="dg-cell dg-cell--2" />
+                      <rect x="120" y="80" width="40" height="40" class="dg-cell dg-cell--3" />
+                      <rect x="0" y="120" width="40" height="40" class="dg-cell dg-cell--1" />
+                      <rect x="40" y="120" width="40" height="40" class="dg-cell dg-cell--1" />
+                      <rect x="80" y="120" width="40" height="40" class="dg-cell dg-cell--1" />
+                      <rect x="120" y="120" width="40" height="40" class="dg-cell dg-cell--2" />
+                      <circle cx="140" cy="20" r="9" class="dg-fill-accent" />
+                      <circle cx="100" cy="60" r="7" class="dg-dot" />
+                      <circle cx="60" cy="100" r="7" class="dg-dot" />
+                      <circle cx="20" cy="140" r="7" class="dg-dot" />
+                      <text x="140" y="24" class="dg-dot-label dg-dot-label--dark">A2</text>
+                      <text x="100" y="64" class="dg-dot-label">A1</text>
+                      <text x="60" y="104" class="dg-dot-label">A4</text>
+                      <text x="20" y="144" class="dg-dot-label">A3</text>
+                      <path d="M0 176H160" class="dg-thin" marker-end="url(#dg-arrow-1)" />
+                      <path d="M-16 160V0" class="dg-thin" marker-end="url(#dg-arrow-1)" />
+                      <text x="80" y="196" class="dg-axis">CONSEQUENCE</text>
+                      <text x="-26" y="80" class="dg-axis" transform="rotate(-90 -26 80)">LIKELIHOOD</text>
+                    </g>
+                    <defs>
+                      <marker id="dg-arrow-1" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 1L10 5L0 9Z" class="dg-marker" /></marker>
+                    </defs>
+                  </svg>
+                  <figcaption>Illustrative diagram: critical assets ranked by likelihood and consequence of failure.</figcaption>
+                </figure>
+              </div>
+
+              <ol class="case-steps" role="list">
+                <li class="case-step">
+                  <h3 class="case-step__title"><span>01</span> Challenge</h3>
+                  <p>A fictional processing plant was experiencing frequent unplanned stoppages on a group of pumps, fans and gearboxes. Maintenance was largely reactive, and the preventive maintenance schedule had been inherited from manufacturers&rsquo; manuals without review.</p>
+                </li>
+                <li class="case-step">
+                  <h3 class="case-step__title"><span>02</span> Approach</h3>
+                  <p>Carry out equipment reliability assessments on critical assets, review failure history and work order records, and run a criticality ranking workshop with operations and maintenance staff. Apply RCM principles to the highest-ranked assets and root cause analysis to recurring failures.</p>
+                </li>
+                <li class="case-step">
+                  <h3 class="case-step__title"><span>03</span> Deliverables</h3>
+                  <ul role="list">
+                    <li>Asset criticality register</li>
+                    <li>Equipment condition assessment reports</li>
+                    <li>Revised maintenance strategy with task and interval recommendations</li>
+                    <li>Prioritised reliability improvement plan</li>
+                  </ul>
+                </li>
+                <li class="case-step case-step--outcome">
+                  <h3 class="case-step__title"><span>04</span> Intended outcome</h3>
+                  <p>Move critical assets from reactive to planned maintenance, reduce repeat failures by addressing root causes, and give the site clear priorities for maintenance effort and budget.</p>
+                </li>
+              </ol>
+            </article>
+
+            <!-- ==================== Case study 2 ==================== -->
+            <article class="case" id="conveyor-upgrade" data-category="mechanical" aria-labelledby="case-2-title">
+              <div class="case__top">
+                <header class="case__header stack">
+                  <div class="cluster case__badges">
+                    <span class="badge-concept">Concept case study &ndash; fictional, for demonstration</span>
+                    <span class="tag tag--category">Mechanical</span>
+                  </div>
+                  <h2 id="case-2-title" class="case__title">Conveyor System Upgrade at a Bulk Materials Site</h2>
+                  <p class="case__meta"><span>Setting:</span> Fictional bulk materials handling site <span class="case__sep" aria-hidden="true">/</span> <span>Services:</span> Mechanical Engineering, Engineering Projects</p>
+                  <p class="lead">Assessment and redesign of an inclined belt conveyor required to handle a heavier duty than it was originally designed for.</p>
+                </header>
+
+                <figure class="case__figure">
+                  <svg class="diagram" viewBox="0 0 560 340" role="img" aria-labelledby="dg-2-title">
+                    <title id="dg-2-title">Diagram: side elevation of an inclined belt conveyor with callouts for the drive upgrade, idler spacing review and take-up modification</title>
+                    <text x="24" y="34" class="dg-label">CONVEYOR ELEVATION</text>
+                    <path d="M24 44H536" class="dg-rule" />
+
+                    <!-- Ground -->
+                    <path d="M24 304H536" class="dg-thin" />
+                    <!-- Feed hopper -->
+                    <path d="M44 200h52l-14 28H58Z" class="dg-line" />
+                    <!-- Belt carry and return -->
+                    <path d="M70 244L470 100" class="dg-line" />
+                    <path d="M70 280L470 144" class="dg-line" />
+                    <circle cx="70" cy="262" r="18" class="dg-line" />
+                    <circle cx="470" cy="122" r="22" class="dg-line" />
+                    <circle cx="470" cy="122" r="5" class="dg-fill-steel" />
+                    <!-- Idlers -->
+                    <g class="dg-fill-steel">
+                      <circle cx="130" cy="229" r="6" /><circle cx="190" cy="207" r="6" /><circle cx="250" cy="186" r="6" />
+                      <circle cx="310" cy="164" r="6" /><circle cx="370" cy="142" r="6" /><circle cx="430" cy="121" r="6" />
+                    </g>
+                    <!-- Supports -->
+                    <path d="M150 253V304M270 212V304M390 171V304M470 144V304" class="dg-thin" />
+                    <!-- Take-up -->
+                    <path d="M110 266V286" class="dg-thin" />
+                    <rect x="98" y="286" width="24" height="14" class="dg-line" />
+                    <!-- Drive -->
+                    <rect x="448" y="150" width="34" height="30" class="dg-fill-accent" />
+                    <rect x="482" y="156" width="46" height="20" class="dg-line" />
+                    <!-- Discharge chute and stockpile -->
+                    <path d="M492 112l28 18v40" class="dg-line" />
+                    <path d="M492 304l28-60 28 60" class="dg-line" />
+
+                    <!-- Callouts -->
+                    <path d="M465 165L420 238H350" class="dg-leader" />
+                    <text x="346" y="242" class="dg-callout" text-anchor="end">Drive upgrade</text>
+                    <path d="M310 158L292 86H212" class="dg-leader" />
+                    <text x="208" y="90" class="dg-callout" text-anchor="end">Idler spacing review</text>
+                    <path d="M122 293H180" class="dg-leader" />
+                    <text x="184" y="297" class="dg-callout">Take-up modification</text>
+                  </svg>
+                  <figcaption>Illustrative diagram: inclined conveyor showing the areas reviewed in the upgrade.</figcaption>
+                </figure>
+              </div>
+
+              <ol class="case-steps" role="list">
+                <li class="case-step">
+                  <h3 class="case-step__title"><span>01</span> Challenge</h3>
+                  <p>An inclined belt conveyor at a fictional bulk materials site was being asked to carry heavier material at a higher rate than its original design. The drive was running hot, the belt was tracking poorly and idlers were being replaced more often than expected.</p>
+                </li>
+                <li class="case-step">
+                  <h3 class="case-step__title"><span>02</span> Approach</h3>
+                  <p>Survey the conveyor on site and assess its condition, compare the original design basis with the new duty, and carry out belt tension and power calculations using recognised design methods. Evaluate options for the drive, idler spacing and take-up, and plan installation to fit a scheduled shutdown.</p>
+                </li>
+                <li class="case-step">
+                  <h3 class="case-step__title"><span>03</span> Deliverables</h3>
+                  <ul role="list">
+                    <li>Conveyor condition survey</li>
+                    <li>Design calculations and options report</li>
+                    <li>Specification for the upgraded drive unit and idlers</li>
+                    <li>Installation and commissioning plan</li>
+                  </ul>
+                </li>
+                <li class="case-step case-step--outcome">
+                  <h3 class="case-step__title"><span>04</span> Intended outcome</h3>
+                  <p>A conveyor able to handle the revised duty with appropriate design margin, better belt tracking and less component wear, with the upgrade completed within a planned shutdown window.</p>
+                </li>
+              </ol>
+            </article>
+
+            <!-- ==================== Case study 3 ==================== -->
+            <article class="case" id="bottleneck-study" data-category="optimisation" aria-labelledby="case-3-title">
+              <div class="case__top">
+                <header class="case__header stack">
+                  <div class="cluster case__badges">
+                    <span class="badge-concept">Concept case study &ndash; fictional, for demonstration</span>
+                    <span class="tag tag--category">Optimisation</span>
+                  </div>
+                  <h2 id="case-3-title" class="case__title">Process Line Bottleneck Study at a Manufacturing Plant</h2>
+                  <p class="case__meta"><span>Setting:</span> Fictional manufacturing plant <span class="case__sep" aria-hidden="true">/</span> <span>Services:</span> Plant Optimisation</p>
+                  <p class="lead">A station-by-station study to find out why a production line was falling short of its planned output.</p>
+                </header>
+
+                <figure class="case__figure">
+                  <svg class="diagram" viewBox="0 0 560 340" role="img" aria-labelledby="dg-3-title">
+                    <title id="dg-3-title">Diagram: a five-station process line with work building up before station S3, and an illustrative capacity profile showing S3 below line demand</title>
+                    <text x="24" y="34" class="dg-label">PROCESS FLOW &amp; CONSTRAINT</text>
+                    <path d="M24 44H536" class="dg-rule" />
+
+                    <!-- Stations -->
+                    <rect x="30" y="104" width="70" height="56" class="dg-line" />
+                    <rect x="132" y="104" width="70" height="56" class="dg-line" />
+                    <rect x="234" y="104" width="70" height="56" class="dg-fill-accent" />
+                    <rect x="336" y="104" width="70" height="56" class="dg-line" />
+                    <rect x="438" y="104" width="70" height="56" class="dg-line" />
+                    <text x="65" y="137" class="dg-station">S1</text>
+                    <text x="167" y="137" class="dg-station">S2</text>
+                    <text x="269" y="137" class="dg-station dg-station--dark">S3</text>
+                    <text x="371" y="137" class="dg-station">S4</text>
+                    <text x="473" y="137" class="dg-station">S5</text>
+                    <!-- Flow arrows -->
+                    <path d="M100 132H128M202 132H230M304 132H332M406 132H434" class="dg-thin" marker-end="url(#dg-arrow-3)" />
+                    <!-- Queue before S3 -->
+                    <g class="dg-fill-steel">
+                      <rect x="206" y="88" width="10" height="10" /><rect x="218" y="88" width="10" height="10" />
+                      <rect x="206" y="76" width="10" height="10" /><rect x="218" y="76" width="10" height="10" />
+                      <rect x="212" y="64" width="10" height="10" />
+                    </g>
+                    <text x="269" y="186" class="dg-callout" text-anchor="middle">Constraint</text>
+
+                    <!-- Capacity profile -->
+                    <path d="M30 300H508" class="dg-thin" />
+                    <rect x="45" y="222" width="40" height="78" class="dg-bar" />
+                    <rect x="147" y="230" width="40" height="70" class="dg-bar" />
+                    <rect x="249" y="258" width="40" height="42" class="dg-fill-accent" />
+                    <rect x="351" y="226" width="40" height="74" class="dg-bar" />
+                    <rect x="453" y="218" width="40" height="82" class="dg-bar" />
+                    <path d="M30 242H508" class="dg-demand" />
+                    <text x="508" y="236" class="dg-callout" text-anchor="end">Line demand</text>
+                    <text x="30" y="322" class="dg-axis-left">STATION CAPACITY (ILLUSTRATIVE)</text>
+                    <defs>
+                      <marker id="dg-arrow-3" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 1L10 5L0 9Z" class="dg-marker" /></marker>
+                    </defs>
+                  </svg>
+                  <figcaption>Illustrative diagram: work builds up ahead of the constraint station, which sits below line demand.</figcaption>
+                </figure>
+              </div>
+
+              <ol class="case-steps" role="list">
+                <li class="case-step">
+                  <h3 class="case-step__title"><span>01</span> Challenge</h3>
+                  <p>A production line at a fictional manufacturing plant was consistently falling short of planned output, even though each machine was rated above the line&rsquo;s required rate. It was not clear where or why time was being lost.</p>
+                </li>
+                <li class="case-step">
+                  <h3 class="case-step__title"><span>02</span> Approach</h3>
+                  <p>Map the process flow and material movement, collect cycle time and stoppage data at each station, and observe changeovers and minor stops on the shop floor. Use the findings to identify the true constraint and develop improvement options with the engineering and operations teams.</p>
+                </li>
+                <li class="case-step">
+                  <h3 class="case-step__title"><span>03</span> Deliverables</h3>
+                  <ul role="list">
+                    <li>Process flow map and station-by-station analysis</li>
+                    <li>Bottleneck identification report</li>
+                    <li>Prioritised improvement options with outline implementation effort</li>
+                    <li>Continuous improvement action plan</li>
+                  </ul>
+                </li>
+                <li class="case-step case-step--outcome">
+                  <h3 class="case-step__title"><span>04</span> Intended outcome</h3>
+                  <p>A shared understanding of what really limits the line, targeted improvements to bring output closer to plan, and a simple framework for monitoring line performance over time.</p>
+                </li>
+              </ol>
+            </article>
+          </div>
+
+          <p class="disclaimer">All case studies on this page are fictional concepts created for portfolio demonstration. Any resemblance to real sites, organisations or projects is coincidental.</p>
+        </div>
+      </section>
+
+      <!-- ==================== CTA band ==================== -->
+      <section class="cta-band" aria-labelledby="cta-title">
+        <div class="container cta-band__inner">
+          <div class="stack stack--sm">
+            <h2 id="cta-title" class="cta-band__title">Let&rsquo;s Engineer What&rsquo;s Next.</h2>
+            <p class="cta-band__text">Discuss your engineering challenges with our team.</p>
+          </div>
+          <a class="btn btn--primary" href="contact.html">Request a Consultation</a>
+        </div>
+      </section>
     </main>
 
     <!-- ==================== Site footer ==================== -->
