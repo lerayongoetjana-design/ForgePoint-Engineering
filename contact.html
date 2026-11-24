@@ -54,7 +54,159 @@
     </header>
 
     <main id="main" class="site-main" tabindex="-1">
-      <!-- Contact page content to be built -->
+      <!-- ==================== Page hero ==================== -->
+      <section class="page-hero" aria-labelledby="page-title">
+        <div class="container stack">
+          <p class="eyebrow">Contact</p>
+          <h1 id="page-title" class="page-hero__title">Request a consultation</h1>
+          <p class="page-hero__lead">Tell us about your equipment, project or operating challenge and we&rsquo;ll use the details to understand how we could help.</p>
+        </div>
+      </section>
+
+      <section class="section" aria-label="Enquiry form and contact details">
+        <div class="container contact-layout">
+
+          <!-- ==================== Enquiry form ==================== -->
+          <div class="form-card">
+            <div class="form-card__header stack stack--sm">
+              <h2 class="form-card__title">Enquiry form</h2>
+              <p class="text-muted">Fields marked <span class="required-mark" aria-hidden="true">*</span><span class="visually-hidden">with an asterisk</span> are required.</p>
+            </div>
+
+            <form class="enquiry-form" id="enquiry-form" action="#" method="post">
+              <div class="form-alert" id="form-alert" role="alert" hidden></div>
+
+              <div class="form-grid">
+                <div class="field">
+                  <label class="field__label" for="full-name">Full name <span class="required-mark" aria-hidden="true">*</span></label>
+                  <input class="field__input" id="full-name" name="fullName" type="text" autocomplete="name" required aria-describedby="full-name-error" />
+                  <p class="field__error" id="full-name-error"></p>
+                </div>
+
+                <div class="field">
+                  <label class="field__label" for="company">Company <span class="required-mark" aria-hidden="true">*</span></label>
+                  <input class="field__input" id="company" name="company" type="text" autocomplete="organization" required aria-describedby="company-error" />
+                  <p class="field__error" id="company-error"></p>
+                </div>
+
+                <div class="field">
+                  <label class="field__label" for="email">Email address <span class="required-mark" aria-hidden="true">*</span></label>
+                  <input class="field__input" id="email" name="email" type="email" autocomplete="email" inputmode="email" required aria-describedby="email-error" />
+                  <p class="field__error" id="email-error"></p>
+                </div>
+
+                <div class="field">
+                  <label class="field__label" for="phone">Phone number <span class="field__optional">(optional)</span></label>
+                  <input class="field__input" id="phone" name="phone" type="tel" autocomplete="tel" inputmode="tel" aria-describedby="phone-error" />
+                  <p class="field__error" id="phone-error"></p>
+                </div>
+
+                <div class="field field--full">
+                  <label class="field__label" for="service">Service of interest <span class="required-mark" aria-hidden="true">*</span></label>
+                  <select class="field__input field__select" id="service" name="service" required aria-describedby="service-error">
+                    <option value="">Select a service</option>
+                    <option value="mechanical-engineering">Mechanical Engineering</option>
+                    <option value="asset-reliability">Asset Reliability &amp; Maintenance</option>
+                    <option value="plant-optimisation">Plant Optimisation</option>
+                    <option value="engineering-projects">Engineering Projects</option>
+                    <option value="other">Other</option>
+                  </select>
+                  <p class="field__error" id="service-error"></p>
+                </div>
+
+                <div class="field field--full">
+                  <label class="field__label" for="message">Message <span class="required-mark" aria-hidden="true">*</span></label>
+                  <p class="field__hint" id="message-hint">Briefly describe your equipment, site or challenge.</p>
+                  <textarea class="field__input field__textarea" id="message" name="message" rows="6" required minlength="20" aria-describedby="message-hint message-error"></textarea>
+                  <p class="field__error" id="message-error"></p>
+                </div>
+
+                <div class="field field--full">
+                  <div class="checkbox">
+                    <input class="checkbox__input" id="consent" name="consent" type="checkbox" required aria-describedby="consent-error" />
+                    <label class="checkbox__label" for="consent">I agree to ForgePoint Engineering using the details in this form to respond to my enquiry. <span class="required-mark" aria-hidden="true">*</span></label>
+                  </div>
+                  <p class="field__error" id="consent-error"></p>
+                </div>
+              </div>
+
+              <div class="form-actions">
+                <button class="btn btn--primary" type="submit">Send enquiry</button>
+                <p class="form-actions__note">Portfolio demo: this form checks your entries but does not send or store them.</p>
+              </div>
+            </form>
+
+            <div class="form-success" id="form-success" hidden>
+              <svg class="form-success__icon" viewBox="0 0 40 40" aria-hidden="true" focusable="false">
+                <polygon points="20,2.5 35.2,11.25 35.2,28.75 20,37.5 4.8,28.75 4.8,11.25" />
+                <path d="m13 20.5 5 5 9-10" />
+              </svg>
+              <h2 class="form-success__title" id="form-success-title" tabindex="-1">Thank you<span data-success-name></span> &mdash; your enquiry is complete</h2>
+              <p>All the details were filled in correctly. As this is a portfolio demonstration with no back end, your enquiry has <strong>not</strong> been sent to anyone and nothing has been stored.</p>
+              <button class="btn btn--secondary btn--sm" type="button" id="form-reset">Start a new enquiry</button>
+            </div>
+          </div>
+
+          <!-- ==================== Contact details ==================== -->
+          <aside class="contact-aside stack stack--lg" aria-label="Contact details">
+            <div class="contact-card">
+              <h2 class="contact-card__title">Contact details</h2>
+              <dl class="contact-list">
+                <div class="contact-list__item">
+                  <svg class="contact-list__icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="3" y="5" width="18" height="14" rx="1.5" /><path d="m3.5 6 8.5 7 8.5-7" /></svg>
+                  <div>
+                    <dt>Email</dt>
+                    <dd><a href="mailto:hello@forgepoint.example">hello@forgepoint.example</a></dd>
+                  </div>
+                </div>
+                <div class="contact-list__item">
+                  <svg class="contact-list__icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6.5 3.5h3l1.5 4.5-2 1.5a11 11 0 0 0 5.5 5.5l1.5-2 4.5 1.5v3a2 2 0 0 1-2 2A16 16 0 0 1 4.5 5.5a2 2 0 0 1 2-2Z" /></svg>
+                  <div>
+                    <dt>Phone</dt>
+                    <dd><a href="tel:+442079460000">+44 20 7946 0000</a></dd>
+                  </div>
+                </div>
+                <div class="contact-list__item">
+                  <svg class="contact-list__icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 21.5s-7-6.2-7-11.5a7 7 0 0 1 14 0c0 5.3-7 11.5-7 11.5Z" /><circle cx="12" cy="10" r="2.5" /></svg>
+                  <div>
+                    <dt>Location</dt>
+                    <dd>Manchester, United Kingdom</dd>
+                  </div>
+                </div>
+              </dl>
+              <p class="illustrative-note">These contact details are illustrative for this portfolio demo. ForgePoint Engineering is a fictional company.</p>
+            </div>
+
+            <!-- Location panel -->
+            <figure class="location-panel">
+              <svg class="location-panel__map" viewBox="0 0 400 260" role="img" aria-labelledby="map-title">
+                <title id="map-title">Stylised location graphic marking Manchester, United Kingdom</title>
+                <!-- Abstract street grid -->
+                <path d="M0 70H400M0 150H400M0 215H400M60 0V260M150 0V260M255 0V260M340 0V260" class="map-road" />
+                <path d="M0 30L120 110L210 120L400 250M20 260L180 40" class="map-road map-road--major" />
+                <!-- River -->
+                <path d="M0 190C60 175 90 205 150 190S240 150 300 165S370 200 400 185" class="map-river" />
+                <!-- Blocks -->
+                <rect x="70" y="80" width="68" height="58" class="map-block" />
+                <rect x="160" y="160" width="84" height="42" class="map-block" />
+                <rect x="265" y="80" width="64" height="58" class="map-block" />
+                <rect x="265" y="225" width="64" height="35" class="map-block" />
+                <!-- Range rings and pin -->
+                <circle cx="200" cy="118" r="56" class="map-ring" />
+                <circle cx="200" cy="118" r="30" class="map-ring" />
+                <g transform="translate(200 104)">
+                  <path d="M0 22-13 4a16 16 0 1 1 26 0Z" class="map-pin" />
+                  <polygon points="0,-15 7.8,-10.5 7.8,-1.5 0,3 -7.8,-1.5 -7.8,-10.5" class="map-pin-hex" />
+                </g>
+              </svg>
+              <figcaption class="location-panel__caption">
+                <span class="location-panel__label">Manchester, United Kingdom</span>
+                <span class="location-panel__note">Stylised graphic for illustration only &mdash; not a real office location.</span>
+              </figcaption>
+            </figure>
+          </aside>
+        </div>
+      </section>
     </main>
 
     <!-- ==================== Site footer ==================== -->
@@ -97,11 +249,11 @@
               </div>
               <div>
                 <dt>Telephone</dt>
-                <dd><a href="tel:+441144960000">0114 496 0000</a></dd>
+                <dd><a href="tel:+442079460000">+44 20 7946 0000</a></dd>
               </div>
               <div>
-                <dt>Office</dt>
-                <dd>Example Business Park, Sheffield, United Kingdom</dd>
+                <dt>Location</dt>
+                <dd>Manchester, United Kingdom</dd>
               </div>
             </dl>
           </address>

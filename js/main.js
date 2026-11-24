@@ -142,6 +142,146 @@
     });
   }
 
+  /* Contact page: enquiry form validation (no back end — nothing is sent)
+     ------------------------------------------------------------------------ */
+  var form = document.getElementById("enquiry-form");
+  if (form) {
+    form.noValidate = true; // use the custom messages below instead of browser pop-ups
+
+    var EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+    var PHONE_PATTERN = /^\+?[0-9\s()-]{7,20}$/;
+    var MESSAGE_MIN = 20;
+
+    var rules = {
+      fullName: function (v) {
+        if (!v) return "Enter your full name.";
+        if (v.length < 2) return "Full name must be at least 2 characters.";
+        return "";
+      },
+      company: function (v) {
+        return v ? "" : "Enter your company name.";
+      },
+      email: function (v) {
+        if (!v) return "Enter your email address.";
+        if (!EMAIL_PATTERN.test(v)) return "Enter an email address in the correct format, like name@company.co.uk.";
+        return "";
+      },
+      phone: function (v) {
+        if (!v) return "";
+        if (!PHONE_PATTERN.test(v) || v.replace(/\D/g, "").length < 7) {
+          return "Enter a valid phone number, like 07700 900000 or +44 20 7946 0000, or leave this blank.";
+        }
+        return "";
+      },
+      service: function (v) {
+        return v ? "" : "Select the service you are interested in.";
+      },
+      message: function (v) {
+        if (!v) return "Enter a message describing your enquiry.";
+        if (v.length < MESSAGE_MIN) {
+          return "Your message must be at least " + MESSAGE_MIN + " characters (currently " + v.length + ").";
+        }
+        return "";
+      },
+      consent: function (checked) {
+        return checked ? "" : "Tick the box to confirm we can use your details to respond.";
+      }
+    };
+
+    var alertBox = document.getElementById("form-alert");
+    var success = document.getElementById("form-success");
+    var successTitle = document.getElementById("form-success-title");
+    var successName = document.querySelector("[data-success-name]");
+    var resetBtn = document.getElementById("form-reset");
+
+    var valueOf = function (field) {
+      return field.type === "checkbox" ? field.checked : field.value.trim();
+    };
+
+    var validateField = function (field) {
+      var rule = rules[field.name];
+      if (!rule) return true;
+      var message = rule(valueOf(field));
+      var errorEl = document.getElementById(field.id + "-error");
+      if (errorEl) errorEl.textContent = message;
+      if (message) {
+        field.setAttribute("aria-invalid", "true");
+      } else {
+        field.removeAttribute("aria-invalid");
+      }
+      return !message;
+    };
+
+    var fields = Object.keys(rules)
+      .map(function (name) { return form.elements[name]; })
+      .filter(Boolean);
+
+    fields.forEach(function (field) {
+      // Check a field once the user leaves it, then re-check as they correct it
+      field.addEventListener("blur", function () {
+        if (field.type !== "checkbox" && valueOf(field) === "" && !field.dataset.touched) return;
+        field.dataset.touched = "true";
+        validateField(field);
+      });
+      field.addEventListener(field.tagName === "SELECT" || field.type === "checkbox" ? "change" : "input", function () {
+        if (field.getAttribute("aria-invalid") === "true" || field.type === "checkbox" || field.tagName === "SELECT") {
+          field.dataset.touched = "true";
+          validateField(field);
+        }
+      });
+    });
+
+    form.addEventListener("submit", function (event) {
+      event.preventDefault();
+      var firstInvalid = null;
+      var errorCount = 0;
+
+      fields.forEach(function (field) {
+        field.dataset.touched = "true";
+        if (!validateField(field)) {
+          errorCount += 1;
+          if (!firstInvalid) firstInvalid = field;
+        }
+      });
+
+      if (firstInvalid) {
+        alertBox.textContent =
+          errorCount === 1
+            ? "There is 1 problem with the form. Please check the highlighted field."
+            : "There are " + errorCount + " problems with the form. Please check the highlighted fields.";
+        alertBox.hidden = false;
+        firstInvalid.focus();
+        return;
+      }
+
+      // Valid: show the on-page confirmation. Nothing is sent or stored.
+      alertBox.hidden = true;
+      var firstName = valueOf(form.elements.fullName).split(/\s+/)[0];
+      successName.textContent = firstName ? ", " + firstName : "";
+      form.hidden = true;
+      success.hidden = false;
+      form.parentElement.classList.add("is-complete");
+      successTitle.focus();
+    });
+
+    if (resetBtn) {
+      resetBtn.addEventListener("click", function () {
+        form.reset();
+        fields.forEach(function (field) {
+          delete field.dataset.touched;
+          field.removeAttribute("aria-invalid");
+          var errorEl = document.getElementById(field.id + "-error");
+          if (errorEl) errorEl.textContent = "";
+        });
+        alertBox.hidden = true;
+        success.hidden = true;
+        form.hidden = false;
+        form.parentElement.classList.remove("is-complete");
+        form.elements.fullName.focus();
+      });
+    }
+  }
+
   /* Copyright year
      ------------------------------------------------------------------------ */
   var year = String(new Date().getFullYear());
