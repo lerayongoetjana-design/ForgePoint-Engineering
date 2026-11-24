@@ -21,6 +21,8 @@
     toggle.setAttribute("aria-label", open ? "Close menu" : "Open menu");
     nav.classList.toggle("is-open", open);
     document.body.classList.toggle("nav-open", open);
+    var siteHeader = document.querySelector(".site-header");
+    if (siteHeader) siteHeader.classList.toggle("is-menu-open", open);
   }
 
   if (toggle && nav) {
@@ -52,12 +54,12 @@
     }
   }
 
-  /* Header shadow once the page has scrolled
+  /* Header: transparent over the hero, solid navy once the page scrolls
      ------------------------------------------------------------------------ */
   var header = document.querySelector(".site-header");
   if (header) {
     var onScroll = function () {
-      header.classList.toggle("is-scrolled", window.scrollY > 8);
+      header.classList.toggle("is-scrolled", window.scrollY > 24);
     };
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
@@ -280,6 +282,63 @@
         form.elements.fullName.focus();
       });
     }
+  }
+
+  /* Fade-up entrance as sections scroll into view
+     ------------------------------------------------------------------------ */
+  var reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  if (!reduceMotion && "IntersectionObserver" in window) {
+    var REVEAL_SELECTOR = [
+      ".section-header",
+      ".card",
+      ".project-card",
+      ".value-card",
+      ".process__step",
+      ".philosophy > *",
+      ".expertise > *",
+      ".industry__header",
+      ".industry__body > *",
+      ".service__intro",
+      ".service__detail",
+      ".case",
+      ".cta-band__inner",
+      ".form-card",
+      ".contact-aside > *",
+      ".sectors__list > li"
+    ].join(",");
+
+    var revealObserver = new IntersectionObserver(
+      function (entries) {
+        entries.forEach(function (entry) {
+          if (!entry.isIntersecting) return;
+          var el = entry.target;
+          el.classList.add("is-visible");
+          revealObserver.unobserve(el);
+          // Hand transitions back to the element (e.g. card hover) once finished
+          var delay = parseInt(el.style.getPropertyValue("--reveal-delay"), 10) || 0;
+          window.setTimeout(function () {
+            el.classList.remove("reveal", "is-visible");
+            el.style.removeProperty("--reveal-delay");
+          }, 900 + delay);
+        });
+      },
+      { rootMargin: "0px 0px -8% 0px", threshold: 0.12 }
+    );
+
+    document.querySelectorAll(REVEAL_SELECTOR).forEach(function (el) {
+      // Leave anything already on screen alone so it never flickers
+      if (el.getBoundingClientRect().top < window.innerHeight) return;
+      // Stagger items that sit side by side in the same list or grid
+      var siblings = Array.prototype.filter.call(el.parentElement.children, function (c) {
+        return c.matches(REVEAL_SELECTOR);
+      });
+      var index = siblings.indexOf(el);
+      if (siblings.length > 1 && index > 0) {
+        el.style.setProperty("--reveal-delay", Math.min(index, 4) * 90 + "ms");
+      }
+      el.classList.add("reveal");
+      revealObserver.observe(el);
+    });
   }
 
   /* Copyright year
